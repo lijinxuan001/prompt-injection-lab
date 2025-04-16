@@ -16,7 +16,7 @@ The lab is divided into two interactive parts: **Attack Mode** and **Defense Mod
 - You act as the LLM system designer.
 - Your goal is to block adversarial prompts using strategies like:
   - Input filtering
-  - Output filtering
+  - Input filtering & Output filtering
   - Behavioral detection
   - Multi-LLM validation (future level)
 - Includes "Evolution Defense" mode: iteratively improve until an attack is blocked.
@@ -40,6 +40,15 @@ pip install -r requirements.txt
 python main.py
 ```
 
+4. quit the lab:
+```bash
+Your attack prompt: /quit
+```
+
+5. guess the result :
+```bash
+Your attack prompt: /guess
+```
 ---
 
 ## 📂 Project Structure
@@ -51,6 +60,7 @@ prompt-injection-lab-final/
 │   └── play.py
 │   └── levels/
 │       └── level_1.json
+│       └── secret.json
 ├── defender_mode/        # Defense side logic & scenarios
 │   ├── __init__.py
 │   └── evolve.py
@@ -59,7 +69,8 @@ prompt-injection-lab-final/
 ├── engine/               # Shared model & scoring engine
 │   ├── __init__.py
 │   ├── llm.py
-│   └── score.py
+│   └── password.py
+│   └── runner.py
 ├── main.py               # Entry point
 └── requirements.txt      # Dependencies
 ```
