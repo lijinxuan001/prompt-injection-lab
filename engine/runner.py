@@ -11,5 +11,8 @@ def launch_lab():
     elif choice == "2":
         from defender_mode.evolve import run_defender_mode
         run_defender_mode()
+    elif choice == "3":
+        from defender_mode.indirect import run_defender_mode2
+        run_defender_mode2()
     else:
         print("Invalid choice.")
