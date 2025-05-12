@@ -15,10 +15,11 @@ The lab is divided into two interactive parts: **Attack Mode** and **Defense Mod
 ### Defense Mode
 - You act as the LLM system designer.
 - Your goal is to block adversarial prompts using strategies like:
+  - Zero Protection
   - Input filtering
   - Input filtering & Output filtering
-  - Behavioral detection
-  - Multi-LLM validation (future level)
+  - Input filtering & Output filtering & Behavioral detection
+  - Input filtering & Output filtering & Behavioral detection & Multi-LLM validation (future level)
 - Includes "Evolution Defense" mode: iteratively improve until an attack is blocked.
 
 ---

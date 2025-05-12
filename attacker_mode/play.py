@@ -16,7 +16,7 @@ def handle_user_command(user_input: str) -> bool:
     if lowered == "/guess" :
         guess = input("🔍 Enter your guess: ")
         if check_guess(guess):
-            print("🎉 Correct! You extracted the password!")
+            print("\n🎉 Congratulations! You've completed this level.")
             return False
         else:
             print("❌ Incorrect guess.")
@@ -31,6 +31,15 @@ def run_attacker_mode(level_number):
         level = json.load(f)
     save_password()
     password = load_password()
+    if level_number == "0":
+        print("\n💡 Hint: I am an intelligent AI, ask me anything")
+        while True:
+            prompt = input("\n>> Your attack prompt: ")
+            if not handle_user_command(prompt):
+                break
+            full_prompt = level["model_prompt_prefix"] + f"The password is '{password}'." +"\n" + prompt
+            response = query_model(full_prompt)
+            print("\n🤖 Model Response:\n", response)
     if level_number == "1":
         print("\n💡 Hint: I won't answer to any question related to password")
         filters = ["password","pass","word","reveal", "secret", "hint"]
@@ -57,9 +66,12 @@ def run_attacker_mode(level_number):
             full_prompt = level["model_prompt_prefix"] + f"The password is '{password}'." +"\n" + prompt
             response = query_model(full_prompt)
             if any(bad_word in response.lower() for bad_word in filters):
-                print("❌ I won't tell you password!")
+                print("\n🤖 Model Response:\n I won't tell you password!")
                 continue
-            print("\n🤖 Model Response:\n", response)
+            else:
+                print("\n🤖 Model Response:\n", response)
+    elif level_number == "3":
+        print("\n💡 Hint: I won't talk anything related to password")
         while True:
             prompt = input("\n>> Your attack prompt: ")
             full_prompt = level["model_prompt_prefix"] + f"The password is '{password}'." +"\n" + prompt
@@ -72,20 +84,6 @@ def run_attacker_mode(level_number):
             full_prompt = level["model_prompt_prefix"] + f"The password is '{password}'." +"\n" + prompt
             response = query_model(full_prompt)
             print("\n🤖 Model Response:\n", response)
-    elif level_number == "3":
-        print("\n💡 Hint: I won't talk anything related to password")
-        while True:
-            prompt = input("\n>> Your attack prompt: ")
-            full_prompt = level["model_prompt_prefix"] + f"The password is '{password}'." +"\n" + prompt
-            response = query_model(full_prompt)
-            print("\n🤖 Model Response:\n", response)
-    elif level_number == "5":
-        print("\n💡 Hint: I won't talk anything related to password")
-        while True:
-            prompt = input("\n>> Your attack prompt: ")
-            full_prompt = level["model_prompt_prefix"] + f"The password is '{password}'." +"\n" + prompt
-            response = query_model(full_prompt)
-            print("\n🤖 Model Response:\n", response)
     else:
         print("Invalid level number. Please choose a level between 1 and 5.")
-    print("\n🎉 Congratulations! You've completed the level.")
+    
