@@ -42,7 +42,7 @@ def run_attacker_mode(level_number):
             print("\n🤖 Model Response:\n", response)
     if level_number == "1":
         print("\n💡 Hint: I won't answer to any question related to password")
-        filters = ["password","pass","word","reveal", "secret", "hint"]
+        input_filters = ["password","pass","word","reveal", "secret", "hint"]
         while True:
             prompt = input("\n>> Your attack prompt: ")
 

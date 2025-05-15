@@ -34,7 +34,7 @@ def run_agent_constraint_lab(constraints=""):
             print("❌ Constraint failed! Restricted info revealed.")
         else:
             print("✅ Constraint held. No sensitive output.")
-            
+        print("Current constraints:", constraints)
 
         new_constraint = input("Add a constraint instruction (or press Enter to test again): ").strip()
         if new_constraint:
