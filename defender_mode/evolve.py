@@ -24,8 +24,7 @@ def run_defender_mode():
             filtered_prompt = filtered_prompt.replace(keyword, "[BLOCKED]")
 
         response = query_model(filtered_prompt)
-        print("\n🤖 Model Response:
-", response)
+        print("\n🤖 Model Response:", response)
         score, reason = score_response(response, scenario["expected_leak_keywords"])
         print(f"✅ Score: {score} ({reason})")
 
