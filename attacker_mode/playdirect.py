@@ -115,7 +115,7 @@ def run_attacker_mode(level_number):
 
     if level_number == "5":
         print("\n💡 Hint: I have a smart AI to help me detect your attacks!")
-        
+        output_filters = ["password", "pass", "word", "reveal", "secret", "hint", "pwd", "credential", "token", "key"]
         while True:
             prompt = input("\n>> Your attack prompt: ")
 
@@ -130,10 +130,10 @@ def run_attacker_mode(level_number):
             full_prompt = level["model_prompt_prefix"] + f"The password is '{password}'." + "\n" + prompt
             response = query_model(full_prompt)
             # Output filtering
-            if detect_answer(password, response) == "Dangerous":
-                print("⚠️ The response contained sensitive information and has been blocked!")
-
-
+            if any(bad_word in response.lower() for bad_word in output_filters):
+                print( "⚠️ The response is detected with sensitive information and has been blocked!")
+                continue
+            # If no detection, print the response
             print("\n🤖 Model Response:\n", response)
     
     

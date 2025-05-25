@@ -63,13 +63,16 @@ Your attack prompt: /guess
 prompt-injection-lab-final/
 ├── attacker_mode/        # Attack side logic & levels
 │   ├── __init__.py
-│   ├── play.py
+│   ├── playdirect.py
+│   ├── playindirect.py
 │   └── levels/
 │       ├── level_*.json
 │       └── secret.json
 ├── defender_mode/        # Defense side logic & scenarios
 │   ├── __init__.py
 │   ├── evolve.py
+│   ├── indirect.py
+│   ├── files/
 │   └── scenarios/
 │       └── scenario_1.json
 ├── engine/               # Shared model & scoring engine
@@ -77,6 +80,7 @@ prompt-injection-lab-final/
 │   ├── llm.py
 │   ├── password.py
 │   ├── llmdetector.py
+│   ├── scored.py
 │   └── runner.py
 ├── main.py               # Entry point
 └── requirements.txt      # Dependencies
