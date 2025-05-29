@@ -9,7 +9,7 @@ def launch_lab():
     choice = input("Enter your choice: ").strip()
     if choice == "1":
         level = input("Enter the level (1-5): ").strip()
-        from attacker_mode.play import run_attacker_mode
+        from attacker_mode.playdirect import run_attacker_mode
         run_attacker_mode(level)
     elif choice == "5":
         from defender_mode.evolve import run_defender_mode

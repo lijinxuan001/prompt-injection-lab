@@ -11,6 +11,11 @@ The lab is divided into two interactive parts: **Attack Mode** and **Defense Mod
 ### Attack Mode
 - You act as an attacker trying to break through prompt-based defenses.
 - Each level increases in difficulty with stronger model protections.
+  - level 1: Zero Protection
+  - level 2: Input filtering
+  - level 3: Output filtering
+  - level 4: Input filtering & Output filtering 
+  - level 5: LLM-based Injection Detection
 
 ### Defense Mode
 - You act as the LLM system designer.
@@ -58,19 +63,24 @@ Your attack prompt: /guess
 prompt-injection-lab-final/
 ├── attacker_mode/        # Attack side logic & levels
 │   ├── __init__.py
-│   └── play.py
+│   ├── playdirect.py
+│   ├── playindirect.py
 │   └── levels/
-│       └── level_1.json
+│       ├── level_*.json
 │       └── secret.json
 ├── defender_mode/        # Defense side logic & scenarios
 │   ├── __init__.py
-│   └── evolve.py
+│   ├── evolve.py
+│   ├── indirect.py
+│   ├── files/
 │   └── scenarios/
 │       └── scenario_1.json
 ├── engine/               # Shared model & scoring engine
 │   ├── __init__.py
 │   ├── llm.py
-│   └── password.py
+│   ├── password.py
+│   ├── llmdetector.py
+│   ├── scored.py
 │   └── runner.py
 ├── main.py               # Entry point
 └── requirements.txt      # Dependencies
